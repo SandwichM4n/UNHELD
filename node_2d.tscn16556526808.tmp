@@ -1,0 +1,91 @@
+[gd_scene load_steps=17 format=3 uid="uid://bt2764fmnk5vn"]
+
+[ext_resource type="Script" uid="uid://b5bcp5vkcrxpq" path="res://pc.gd" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://5wt8cb6b87n2" path="res://Anims/IreliaRun1S.png" id="2_0h7mo"]
+[ext_resource type="Texture2D" uid="uid://duutckwc8j6bm" path="res://Anims/IreliaRun1NE.png" id="2_d21ai"]
+[ext_resource type="Texture2D" uid="uid://bck5nsd0wr3ky" path="res://Anims/IreliaRun2S.png" id="3_nr8wp"]
+[ext_resource type="Texture2D" uid="uid://b611qk118rbtr" path="res://Anims/IreliaRun2NE.png" id="3_rj586"]
+[ext_resource type="Texture2D" uid="uid://bnikna7ljfs45" path="res://Anims/IreliaRun3NE.png" id="4_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://g5rjjcqcp2ia" path="res://Anims/IreliaRun3S.png" id="4_d2bti"]
+[ext_resource type="Texture2D" uid="uid://ynq6v1u1enbq" path="res://Anims/IreliaRun4NE.png" id="5_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://do6agp0xuqy" path="res://Anims/IreliaRun4S.png" id="5_ta5nu"]
+[ext_resource type="Texture2D" uid="uid://lor8uu4nvfi5" path="res://Anims/IreliaRun5S.png" id="6_flf07"]
+[ext_resource type="Texture2D" uid="uid://c3nuxfhp1q246" path="res://Anims/IreliaRun5NE.png" id="6_hqns4"]
+[ext_resource type="Texture2D" uid="uid://dsr0u5adeksmc" path="res://Anims/IreliaRun6S.png" id="7_k73cj"]
+[ext_resource type="Texture2D" uid="uid://byfces6tte1uq" path="res://Anims/IreliaRun6NE.png" id="7_x0ka3"]
+
+[sub_resource type="TileSet" id="TileSet_0e48y"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0h7mo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0h7mo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nr8wp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d2bti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ta5nu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_flf07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_k73cj")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d21ai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rj586")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4d7sh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ir8iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_hqns4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x0ka3")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0h7mo"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_0e48y")
+
+[node name="PC" type="CharacterBody2D" parent="."]
+script = ExtResource("1_wtcfe")
+speed = null
+
+[node name="Sprites" type="AnimatedSprite2D" parent="PC"]
+position = Vector2(-85, -98)
+sprite_frames = SubResource("SpriteFrames_0h7mo")
+animation = &"walk_down"
+frame = 5
+frame_progress = 0.9134442
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC"]
+shape = SubResource("RectangleShape2D_0h7mo")

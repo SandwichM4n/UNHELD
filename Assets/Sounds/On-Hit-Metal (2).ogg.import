@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://pxsjcmr6m03l"
+path="res://.godot/imported/On-Hit-Metal (2).ogg-3566f680ace7000b2c7bb37078f6c83d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/On-Hit-Metal (2).ogg"
+dest_files=["res://.godot/imported/On-Hit-Metal (2).ogg-3566f680ace7000b2c7bb37078f6c83d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

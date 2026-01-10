@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dagn05rh6ylkh"
+path="res://.godot/imported/On-Hit-Flesh (4).ogg-cd37cae115feeb80a102c14d26bc5ff7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/On-Hit-Flesh (4).ogg"
+dest_files=["res://.godot/imported/On-Hit-Flesh (4).ogg-cd37cae115feeb80a102c14d26bc5ff7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

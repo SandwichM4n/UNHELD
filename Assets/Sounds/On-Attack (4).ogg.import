@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b0xpb4fb1fx0f"
+path="res://.godot/imported/On-Attack (4).ogg-23047275370bdbfbad136c14f16ea870.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/On-Attack (4).ogg"
+dest_files=["res://.godot/imported/On-Attack (4).ogg-23047275370bdbfbad136c14f16ea870.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

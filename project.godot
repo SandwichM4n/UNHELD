@@ -13,7 +13,7 @@ config_version=5
 config/name="Vanguard's Edge"
 run/main_scene="uid://bt2764fmnk5vn"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Sprites/icon.svg"
 
 [display]
 
