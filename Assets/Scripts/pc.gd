@@ -13,30 +13,32 @@ var can_attack = true
 func _ready():
 	get_window().grab_focus()
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	# 1. MOVEMENT LOGIC
 	if is_attacking:
-		velocity = velocity.lerp(Vector2.ZERO, 0.25) # Slow down during spin
+		velocity = velocity.lerp(Vector2.ZERO, 0.25)
 	else:
 		var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		if input_dir != Vector2.ZERO:
 			velocity = input_dir * speed
-			last_direction = input_dir.normalized() # Save the direction!
+			last_direction = input_dir.normalized()
 			update_sprite_direction(input_dir)
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, 30.0)
 			if velocity.length() < 1.0:
 				velocity = Vector2.ZERO
+	
 	move_and_slide()
-	# If blade wasn't found at start, try to find it now
+
+	# 2. BLADE MANAGEMENT
 	if not blade:
 		blade = get_tree().get_first_node_in_group("blades")
-	if blade and is_instance_valid(blade):
-		# We only follow if the blade isn't busy slashing
-		if not blade.is_attacking:
-			blade.handle_follow_logic(delta)
-		
-		# Keep the debug lines drawing in sync
+	
+	# We only need to tell the blade to redraw if you are using it for debug lines
+	if is_instance_valid(blade):
 		blade.queue_redraw()
+
+	# 3. ATTACK INPUT
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		attack()
 

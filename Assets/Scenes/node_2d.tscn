@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bt2764fmnk5vn"]
+[gd_scene load_steps=26 format=4 uid="uid://bt2764fmnk5vn"]
 
 [ext_resource type="Script" uid="uid://dvv3n5cx5elvn" path="res://Assets/Scripts/pc.gd" id="1_i0ca2"]
 [ext_resource type="Texture2D" uid="uid://sl4miqssyk14" path="res://Assets/Sprites/square-xxl.png" id="2_duppq"]
@@ -16,6 +16,9 @@
 [ext_resource type="AudioStream" uid="uid://dkgckh6br3tg1" path="res://Assets/Sounds/On-Hit-Flesh (3).ogg" id="11_j2do2"]
 [ext_resource type="AudioStream" uid="uid://dagn05rh6ylkh" path="res://Assets/Sounds/On-Hit-Flesh (4).ogg" id="12_qjy51"]
 [ext_resource type="AudioStream" uid="uid://dx7ugbix428fp" path="res://Assets/Sounds/On-Hit-Flesh (5).ogg" id="13_6w7qo"]
+[ext_resource type="Script" uid="uid://c7b8bxgnq4swx" path="res://Assets/Scenes/audio_manager.gd" id="15_02lvh"]
+[ext_resource type="Script" uid="uid://bq1kp22tb4qq" path="res://Assets/Scenes/mover.gd" id="16_j2do2"]
+[ext_resource type="Script" uid="uid://ddfq30jv2ytro" path="res://Assets/Scenes/vfx.gd" id="17_qjy51"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
 size = Vector2(24.849247, 49.54773)
@@ -204,8 +207,6 @@ y_sort_enabled = true
 texture_filter = 1
 position = Vector2(37, -23)
 script = ExtResource("4_ubt4h")
-whoosh_sounds = Array[AudioStream]([ExtResource("5_ooilj"), ExtResource("6_2w2ct"), ExtResource("7_aq61h"), ExtResource("8_61ydt")])
-hit_flesh_sounds = Array[AudioStream]([ExtResource("9_s7rws"), ExtResource("10_02lvh"), ExtResource("11_j2do2"), ExtResource("12_qjy51"), ExtResource("13_6w7qo")])
 
 [node name="Bladesprite" type="Sprite2D" parent="Blade"]
 y_sort_enabled = true
@@ -238,8 +239,19 @@ antialiased = true
 [node name="SFXOnAttack" type="AudioStreamPlayer2D" parent="Blade"]
 volume_db = -2.461
 
-[node name="SFXOnGetHit" type="AudioStreamPlayer2D" parent="Blade"]
+[node name="SFXOnHit" type="AudioStreamPlayer2D" parent="Blade"]
 volume_db = 0.615
+
+[node name="AudioManager" type="Node" parent="Blade"]
+script = ExtResource("15_02lvh")
+whoosh_sounds = Array[AudioStream]([ExtResource("5_ooilj"), ExtResource("6_2w2ct"), ExtResource("7_aq61h"), ExtResource("8_61ydt")])
+hit_sounds = Array[AudioStream]([ExtResource("9_s7rws"), ExtResource("10_02lvh"), ExtResource("11_j2do2"), ExtResource("12_qjy51"), ExtResource("13_6w7qo")])
+
+[node name="Mover" type="Node" parent="Blade"]
+script = ExtResource("16_j2do2")
+
+[node name="VFX" type="Node" parent="Blade"]
+script = ExtResource("17_qjy51")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
