@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bt2764fmnk5vn"]
+[gd_scene load_steps=29 format=4 uid="uid://bt2764fmnk5vn"]
 
 [ext_resource type="Script" uid="uid://dvv3n5cx5elvn" path="res://Assets/Scripts/pc.gd" id="1_i0ca2"]
 [ext_resource type="Texture2D" uid="uid://sl4miqssyk14" path="res://Assets/Sprites/square-xxl.png" id="2_duppq"]
@@ -16,12 +16,17 @@
 [ext_resource type="AudioStream" uid="uid://dkgckh6br3tg1" path="res://Assets/Sounds/On-Hit-Flesh (3).ogg" id="11_j2do2"]
 [ext_resource type="AudioStream" uid="uid://dagn05rh6ylkh" path="res://Assets/Sounds/On-Hit-Flesh (4).ogg" id="12_qjy51"]
 [ext_resource type="AudioStream" uid="uid://dx7ugbix428fp" path="res://Assets/Sounds/On-Hit-Flesh (5).ogg" id="13_6w7qo"]
-[ext_resource type="Script" uid="uid://c7b8bxgnq4swx" path="res://Assets/Scenes/audio_manager.gd" id="15_02lvh"]
-[ext_resource type="Script" uid="uid://bq1kp22tb4qq" path="res://Assets/Scenes/mover.gd" id="16_j2do2"]
-[ext_resource type="Script" uid="uid://ddfq30jv2ytro" path="res://Assets/Scenes/vfx.gd" id="17_qjy51"]
+[ext_resource type="Script" uid="uid://c7b8bxgnq4swx" path="res://Assets/Scripts/audio_manager.gd" id="15_02lvh"]
+[ext_resource type="Script" uid="uid://bq1kp22tb4qq" path="res://Assets/Scripts/mover.gd" id="16_j2do2"]
+[ext_resource type="Script" uid="uid://ddfq30jv2ytro" path="res://Assets/Scripts/vfx.gd" id="17_qjy51"]
+[ext_resource type="Script" uid="uid://duqqqcrxmn7g2" path="res://Assets/Scripts/basic_attack.gd" id="18_6w7qo"]
+[ext_resource type="Script" uid="uid://chm0dee43j2al" path="res://Assets/Scripts/juice_manager.gd" id="19_64k3t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
 size = Vector2(24.849247, 49.54773)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w7qo"]
+bg_color = Color(0.12941177, 0.6784314, 0.70980394, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
 size = Vector2(405.00034, 120.00001)
@@ -192,6 +197,17 @@ rotation = 0.7853982
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_kdubu")
 
+[node name="DebugHUD" type="Node" parent="PC"]
+
+[node name="AttackCooldownBar" type="ProgressBar" parent="PC/DebugHUD"]
+offset_left = -61.0
+offset_top = -49.0
+offset_right = -21.0
+offset_bottom = -43.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_6w7qo")
+value = 100.0
+show_percentage = false
+
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(59, 59)
 script = ExtResource("3_vqsqb")
@@ -253,7 +269,14 @@ script = ExtResource("16_j2do2")
 [node name="VFX" type="Node" parent="Blade"]
 script = ExtResource("17_qjy51")
 
+[node name="BasicAttack" type="Node" parent="Blade"]
+script = ExtResource("18_6w7qo")
+
+[node name="JuiceManager" type="Node" parent="Blade"]
+script = ExtResource("19_64k3t")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
 z_index = -1
 y_sort_enabled = true
 position = Vector2(430.99997, 185)

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var blade = get_tree().get_first_node_in_group("blades")
+@onready var cooldown_bar = $DebugHUD/AttackCooldownBar
 var last_direction = Vector2.RIGHT
 @export var speed = 100.0
 @export var attack_range = 80.0
@@ -16,7 +17,7 @@ func _ready():
 func _physics_process(_delta):
 	# 1. MOVEMENT LOGIC
 	if is_attacking:
-		velocity = velocity.lerp(Vector2.ZERO, 0.25)
+		velocity = velocity.lerp(Vector2.ZERO, 0.01)
 	else:
 		var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		if input_dir != Vector2.ZERO:
@@ -50,12 +51,12 @@ func update_sprite_direction(dir: Vector2):
 func attack():    
 	if not can_attack:
 		return
-	
-	
 	# Keep your safety check: ensures blade is ready
 	if blade and not blade.is_attacking:
 		can_attack = false
-		
+		is_attacking = true
+		cooldown_bar.value = 100
+		create_tween().tween_property(cooldown_bar, "value", 0, 1.0)
 		# We replace the long manual math with the new function call
 		var attack_vec: Vector2
 		if is_auto_flowing:
@@ -68,6 +69,7 @@ func attack():
 		
 		# Your existing timer logic
 		await get_tree().create_timer(1).timeout # 0.4 is usually snappier than 1.0!
+		is_attacking = false
 		# --- THE ELEGANT CHECK ---
 		# If the player is STILL holding the attack button after the timer...
 		if Input.is_action_pressed("attack") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
