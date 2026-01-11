@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8jm0nd1hfnvq"]
+
+[ext_resource type="Script" uid="uid://dfxs5uag17ksb" path="res://Assets/Scripts/enemy_juggernaut.gd" id="1_4o2uw"]
+[ext_resource type="Texture2D" uid="uid://bakhd01xi2wtb" path="res://Assets/Sprites/knight.png" id="1_vbtk4"]
+[ext_resource type="Script" uid="uid://chqlom5wxfqg" path="res://Assets/Scripts/MeleeMovement.gd" id="2_jwopi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4o2uw"]
+size = Vector2(24.313713, 50.698486)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fitob"]
+size = Vector2(24.849247, 52.022602)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o2uw"]
+bg_color = Color(0.83857155, 0, 0.14814806, 1)
+
+[node name="EnemyJuggernaut" type="CharacterBody2D"]
+script = ExtResource("1_4o2uw")
+max_hp = 12
+knockback_resistance = 0.8
+move_speed = 75.0
+metadata/_custom_type_script = "uid://bnm6xue0c3fvp"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.7853982
+scale = Vector2(0.1, 0.2)
+texture = ExtResource("1_vbtk4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5208132, 0.32842442)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_4o2uw")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(68, 16)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-67.6783, -16.892767)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_fitob")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_jwopi")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -40.0
+offset_right = 37.0
+offset_bottom = -34.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_4o2uw")
+value = 100.0
+show_percentage = false

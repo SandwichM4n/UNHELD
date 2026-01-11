@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bds38k55imvjm"]
+
+[ext_resource type="Script" uid="uid://c2nss17fpar50" path="res://Assets/Scripts/EnemySwarmer.gd" id="1_rbgu1"]
+[ext_resource type="Texture2D" uid="uid://nvep1drxxc6d" path="res://Assets/Sprites/square-xxl2.png" id="2_l0r3x"]
+[ext_resource type="Script" uid="uid://chqlom5wxfqg" path="res://Assets/Scripts/MeleeMovement.gd" id="3_l0r3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(33.637825, 54.44723)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(6.767763, 19.64734)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0r3x"]
+bg_color = Color(0.83857155, 0, 0.14814806, 1)
+
+[node name="EnemySwarmer" type="CharacterBody2D" groups=["enemies"]]
+y_sort_enabled = true
+script = ExtResource("1_rbgu1")
+max_hp = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.847107, 0.1529007)
+rotation = 0.7853982
+scale = Vector2(0.1, 0.2)
+texture = ExtResource("2_l0r3x")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(1.1529007, -1.8470936)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-3.152893, 1.8470879)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.9999924, 0)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_l0r3x")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -27.0
+offset_top = -40.0
+offset_right = 37.0
+offset_bottom = -34.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_l0r3x")
+value = 100.0
+show_percentage = false
