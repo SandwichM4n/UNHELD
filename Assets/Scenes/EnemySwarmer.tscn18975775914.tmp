@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bds38k55imvjm"]
 
-[ext_resource type="Script" uid="uid://c2nss17fpar50" path="res://Assets/Scripts/enemy.gd" id="1_e2b7p"]
-[ext_resource type="Texture2D" uid="uid://nvep1drxxc6d" path="res://Assets/Sprites/square-xxl2.png" id="2_2g0jp"]
+[ext_resource type="Script" uid="uid://c2nss17fpar50" path="res://Assets/Scripts/EnemySwarmer.gd" id="1_rbgu1"]
+[ext_resource type="Texture2D" uid="uid://nvep1drxxc6d" path="res://Assets/Sprites/square-xxl2.png" id="2_l0r3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
 size = Vector2(33.637825, 54.44723)
@@ -9,15 +9,18 @@ size = Vector2(33.637825, 54.44723)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(6.767763, 19.64734)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="EnemySwarmer" type="CharacterBody2D" groups=["enemies"]]
 y_sort_enabled = true
-script = ExtResource("1_e2b7p")
+script = ExtResource("1_rbgu1")
+max_hp = null
+knockback_resistance = null
+move_speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2.847107, 0.1529007)
 rotation = 0.7853982
 scale = Vector2(0.1, 0.2)
-texture = ExtResource("2_2g0jp")
+texture = ExtResource("2_l0r3x")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(1.1529007, -1.8470936)

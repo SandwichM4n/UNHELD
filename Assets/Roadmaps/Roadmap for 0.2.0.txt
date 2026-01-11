@@ -1,0 +1,38 @@
+🗺️ Enemy System Roadmap (v4)
+Phase 1: The Foundation (The "Brain" & "Hand")
+
+	[x] Step 1: File Setup (Renamed to EnemySwarmer.gd)
+
+	[x] Step 2: The Core Brain (BaseEnemy.gd)
+
+		Variables: hp, move_speed, knockback_resistance.
+
+		Logic: Visual flash and physics knockback moved here for global use.
+
+	[x] Step 3: The Universal Hand (DamageHandler.gd) * Action: Create a node that handles the Area2D signals.
+
+		Logic: Calculates the 1–6 roll and finds the hit direction.
+
+		Scalability: This node will be usable by any "attacker" in the game.
+
+	[x] Step 4: Blade & Swarmer Refactor
+
+		Blade: Remove combat logic; it just swings the DamageHandler.
+
+		Swarmer: Clean up script to only handle movement (The "Skeleton").
+
+Phase 2: Movement & Composition
+
+	[x] Step 5: Movement Components (MeleeMovement.gd, RangedMovement.gd - later).
+
+	[Skipped] Step 6: "The Handshake" (BaseEnemy stopping movement during hit-stun).
+
+Phase 3: The Heavyweights
+
+	[x] Step 7: The Juggernaut (HP = 18, Resist = 1.0).
+
+	[Skip this shit for now] Step 8: The Shielder (Dot Product calculation for frontal blocks).
+
+Phase 4: Polish & Scaling
+
+	[ ] Step 9: Damage Numbers (Visualizing the rolls in world-space).

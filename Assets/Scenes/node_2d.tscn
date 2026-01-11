@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bt2764fmnk5vn"]
+[gd_scene load_steps=31 format=4 uid="uid://bt2764fmnk5vn"]
 
 [ext_resource type="Script" uid="uid://dvv3n5cx5elvn" path="res://Assets/Scripts/pc.gd" id="1_i0ca2"]
 [ext_resource type="Texture2D" uid="uid://sl4miqssyk14" path="res://Assets/Sprites/square-xxl.png" id="2_duppq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dw42drpwhf4bh" path="res://Assets/Sprites/BladesAttackS10.png" id="5_rdao5"]
 [ext_resource type="AudioStream" uid="uid://bhbgkk0vje0bx" path="res://Assets/Sounds/On-Attack (2).ogg" id="6_2w2ct"]
 [ext_resource type="Texture2D" uid="uid://ds5t21c0gbm48" path="res://Assets/Sprites/diablotiles/environment/ground_stone1.png" id="6_ooilj"]
+[ext_resource type="Script" uid="uid://bh7npvxsyupxg" path="res://Assets/Scripts/DamageHandler.gd" id="6_spvk6"]
 [ext_resource type="Script" uid="uid://dpmmc6vp4m2tn" path="res://Assets/Scripts/camera_2d.gd" id="7_2w2ct"]
 [ext_resource type="AudioStream" uid="uid://csl7f2uupr3ou" path="res://Assets/Sounds/On-Attack (3).ogg" id="7_aq61h"]
 [ext_resource type="AudioStream" uid="uid://b0xpb4fb1fx0f" path="res://Assets/Sounds/On-Attack (4).ogg" id="8_61ydt"]
@@ -21,6 +22,7 @@
 [ext_resource type="Script" uid="uid://ddfq30jv2ytro" path="res://Assets/Scripts/vfx.gd" id="17_qjy51"]
 [ext_resource type="Script" uid="uid://duqqqcrxmn7g2" path="res://Assets/Scripts/basic_attack.gd" id="18_6w7qo"]
 [ext_resource type="Script" uid="uid://chm0dee43j2al" path="res://Assets/Scripts/juice_manager.gd" id="19_64k3t"]
+[ext_resource type="PackedScene" uid="uid://c8jm0nd1hfnvq" path="res://Assets/Scenes/enemy_juggernaut.tscn" id="23_ig8j3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
 size = Vector2(24.849247, 49.54773)
@@ -242,6 +244,9 @@ position = Vector2(-22.5, 39.999954)
 scale = Vector2(0.99999917, 0.99999917)
 shape = SubResource("RectangleShape2D_q6r6c")
 
+[node name="Damager" type="Node2D" parent="Blade/Area2D"]
+script = ExtResource("6_spvk6")
+
 [node name="Line2D" type="Line2D" parent="Blade"]
 top_level = true
 width = 7.0
@@ -253,7 +258,7 @@ end_cap_mode = 2
 antialiased = true
 
 [node name="SFXOnAttack" type="AudioStreamPlayer2D" parent="Blade"]
-volume_db = -2.461
+volume_db = -1.9
 
 [node name="SFXOnHit" type="AudioStreamPlayer2D" parent="Blade"]
 volume_db = 0.615
@@ -297,5 +302,8 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 script = ExtResource("7_2w2ct")
 
+[node name="EnemyJuggernaut" parent="." instance=ExtResource("23_ig8j3")]
+position = Vector2(493, 414)
+
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
-[connection signal="area_entered" from="Blade/Area2D" to="Blade" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Blade/Area2D" to="Blade/Area2D/Damager" method="_on_area_2d_area_entered"]
