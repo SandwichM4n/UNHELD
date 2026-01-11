@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var anim_manager = $AnimManager
 @onready var blade = get_tree().get_first_node_in_group("blades")
 @onready var cooldown_bar = $DebugHUD/AttackCooldownBar
 var last_direction = Vector2.RIGHT
@@ -10,11 +11,14 @@ var is_attacking = false
 @onready var anim = $AnimationPlayer # Assuming you have one
 var is_auto_flowing = false
 var can_attack = true
+var current_state
 
 func _ready():
 	get_window().grab_focus()
+	current_state = anim_manager.State.RUN
 
 func _physics_process(_delta):
+	anim_manager.update_visuals(current_state, velocity)
 	# 1. MOVEMENT LOGIC
 	if is_attacking:
 		velocity = velocity.lerp(Vector2.ZERO, 0.01)

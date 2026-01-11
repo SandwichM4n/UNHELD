@@ -1,13 +1,18 @@
-[gd_scene load_steps=31 format=4 uid="uid://bt2764fmnk5vn"]
+[gd_scene load_steps=43 format=4 uid="uid://bt2764fmnk5vn"]
 
 [ext_resource type="Script" uid="uid://dvv3n5cx5elvn" path="res://Assets/Scripts/pc.gd" id="1_i0ca2"]
-[ext_resource type="Texture2D" uid="uid://sl4miqssyk14" path="res://Assets/Sprites/square-xxl.png" id="2_duppq"]
+[ext_resource type="Texture2D" uid="uid://78td6qyfy2ey" path="res://Assets/Sprites/PCSprites/run_up.png" id="2_kh5qn"]
+[ext_resource type="Texture2D" uid="uid://dposiopfw0lmc" path="res://Assets/Sprites/PCSprites/run_up_diag.png" id="3_kg43w"]
+[ext_resource type="Script" uid="uid://l7dko4tcxotj" path="res://Assets/Scenes/anim_manager.gd" id="3_r2kmt"]
 [ext_resource type="Script" uid="uid://cdh2iud5muwe0" path="res://Assets/Scripts/enemy_spawner.gd" id="3_vqsqb"]
+[ext_resource type="Texture2D" uid="uid://ba8hv51l8f3o6" path="res://Assets/Sprites/PCSprites/run_w.png" id="4_4bama"]
 [ext_resource type="Script" uid="uid://37hhouxfcfp7" path="res://Assets/Scripts/blade.gd" id="4_ubt4h"]
 [ext_resource type="AudioStream" uid="uid://drbha12oo7xfv" path="res://Assets/Sounds/On-Attack (1).ogg" id="5_ooilj"]
 [ext_resource type="Texture2D" uid="uid://dw42drpwhf4bh" path="res://Assets/Sprites/BladesAttackS10.png" id="5_rdao5"]
+[ext_resource type="Texture2D" uid="uid://bklrpusjqcixq" path="res://Assets/Sprites/PCSprites/run_down_diag.png" id="5_y0ef2"]
 [ext_resource type="AudioStream" uid="uid://bhbgkk0vje0bx" path="res://Assets/Sounds/On-Attack (2).ogg" id="6_2w2ct"]
 [ext_resource type="Texture2D" uid="uid://ds5t21c0gbm48" path="res://Assets/Sprites/diablotiles/environment/ground_stone1.png" id="6_ooilj"]
+[ext_resource type="Texture2D" uid="uid://ep27yqvgvmae" path="res://Assets/Sprites/PCSprites/run_down.png" id="6_pwrne"]
 [ext_resource type="Script" uid="uid://bh7npvxsyupxg" path="res://Assets/Scripts/DamageHandler.gd" id="6_spvk6"]
 [ext_resource type="Script" uid="uid://dpmmc6vp4m2tn" path="res://Assets/Scripts/camera_2d.gd" id="7_2w2ct"]
 [ext_resource type="AudioStream" uid="uid://csl7f2uupr3ou" path="res://Assets/Sounds/On-Attack (3).ogg" id="7_aq61h"]
@@ -25,13 +30,204 @@
 [ext_resource type="PackedScene" uid="uid://c8jm0nd1hfnvq" path="res://Assets/Scenes/enemy_juggernaut.tscn" id="23_ig8j3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
-size = Vector2(24.849247, 49.54773)
+size = Vector2(55.78859, 72.34494)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w7qo"]
 bg_color = Color(0.12941177, 0.6784314, 0.70980394, 1)
 
+[sub_resource type="Animation" id="Animation_wqxw1"]
+resource_name = "run_n"
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kh5qn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.3332, 0.4165, 0.49980003, 0.5831, 0.6664, 0.7497, 0.833, 0.9163),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_4bama"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kh5qn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_y0ef2"]
+resource_name = "run_n_diag"
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_kg43w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.3332, 0.4165, 0.49980003, 0.5831, 0.6664, 0.7497, 0.833, 0.9163, 0.99960005, 1.0829, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 11, 11]
+}
+
+[sub_resource type="Animation" id="Animation_7a4l4"]
+resource_name = "run_w"
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_4bama")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.3332, 0.4165, 0.49980003, 0.5831, 0.6664, 0.7497, 0.833, 0.9163),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_bcrat"]
+resource_name = "run_s_diag"
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_y0ef2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.3332, 0.4165, 0.49980003, 0.5831, 0.6664, 0.7497, 0.833, 0.9163),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_4chkd"]
+resource_name = "run_s"
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_pwrne")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.3332, 0.4165, 0.49980003, 0.5831, 0.6664, 0.7497, 0.833, 0.9163),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r2kmt"]
+_data = {
+&"RESET": SubResource("Animation_4bama"),
+&"run_n": SubResource("Animation_wqxw1"),
+&"run_n_diag": SubResource("Animation_y0ef2"),
+&"run_s": SubResource("Animation_4chkd"),
+&"run_s_diag": SubResource("Animation_bcrat"),
+&"run_w": SubResource("Animation_7a4l4")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
-size = Vector2(405.00034, 120.00001)
+size = Vector2(740.0006, 120.00003)
 
 [sub_resource type="Curve" id="Curve_rj586"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -187,15 +383,15 @@ y_sort_enabled = true
 position = Vector2(-44, -8)
 script = ExtResource("1_i0ca2")
 
-[node name="Sprite" type="Sprite2D" parent="PC"]
+[node name="Sprite2D" type="Sprite2D" parent="PC"]
 position = Vector2(1.1529007, -0.8470993)
-rotation = 0.7853982
-scale = Vector2(0.1, 0.2)
-texture = ExtResource("2_duppq")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kh5qn")
+hframes = 4
+vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PC"]
-position = Vector2(0.84959984, -1.1148682)
-rotation = 0.7853982
+position = Vector2(-5, 3)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_kdubu")
 
@@ -209,6 +405,14 @@ offset_bottom = -43.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_6w7qo")
 value = 100.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PC"]
+libraries = {
+&"": SubResource("AnimationLibrary_r2kmt")
+}
+
+[node name="AnimManager" type="Node2D" parent="PC"]
+script = ExtResource("3_r2kmt")
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(59, 59)
@@ -240,8 +444,8 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blade/Area2D"]
-position = Vector2(-22.5, 39.999954)
-scale = Vector2(0.99999917, 0.99999917)
+position = Vector2(10, 39.999954)
+scale = Vector2(0.9999989, 0.9999989)
 shape = SubResource("RectangleShape2D_q6r6c")
 
 [node name="Damager" type="Node2D" parent="Blade/Area2D"]
