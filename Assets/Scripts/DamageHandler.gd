@@ -4,7 +4,37 @@ class_name DamageHandler
 @export var min_damage: int = 1
 @export var max_damage: int = 6
 @export var hit_sfx_name: String = "hit" # You can change this in Inspector for different weapons!
-@onready var audio = get_parent().get_parent().get_node("AudioManager") # Path: Area2D -> Blade -> AudioManager
+@export var allow_multi_hit: bool = false  # ← New: for attacks that can hit same enemy multiple times
+@onready var audio = %AudioManager # Path: Area2D -> Blade -> AudioManager
+@onready var hit_zone = get_parent() as Area2D  # The Area2D this is attached to
+var enemies_hit_this_attack: Array = []
+
+func _ready():
+	if hit_zone:
+		hit_zone.area_entered.connect(_on_area_entered)
+
+func reset_hit_tracking():
+	"""Call this when a new attack starts"""
+	enemies_hit_this_attack.clear()
+
+func _on_area_entered(area: Area2D) -> void:
+	# After you calculate final_damage
+	var victim = area.get_parent()
+	# Check if what we hit is a BaseEnemy
+	if not victim is BaseEnemy:
+		return
+	# Check if already hit (unless multi-hit is allowed)
+	if not allow_multi_hit and victim in enemies_hit_this_attack:
+		return
+	enemies_hit_this_attack.append(victim)	
+	var final_damage = randi_range(min_damage, max_damage)
+	spawn_damage_number(final_damage, victim.global_position)
+		# 1. Play the sound via the AudioManager
+	if audio:
+		audio.play_sfx(hit_sfx_name)
+		# 2. Deal the damage
+	victim.take_damage(final_damage, global_position)
+
 
 func spawn_damage_number(amount: int, pos: Vector2):
 	var label = Label.new()
@@ -28,16 +58,3 @@ func spawn_damage_number(amount: int, pos: Vector2):
 	t.parallel().tween_property(label, "modulate:a", 0.0, 0.3).set_delay(0.2)
 	# Cleanup
 	t.chain().tween_callback(label.queue_free)
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	# After you calculate final_damage
-	var victim = area.get_parent()
-	# Check if what we hit is a BaseEnemy
-	if victim is BaseEnemy:
-		var final_damage = randi_range(min_damage, max_damage)
-		spawn_damage_number(final_damage, victim.global_position)
-		# 1. Play the sound via the AudioManager
-		if audio:
-			audio.play_sfx(hit_sfx_name)
-		# 2. Deal the damage
-		victim.take_damage(final_damage, global_position)

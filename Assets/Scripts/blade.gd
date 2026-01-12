@@ -9,6 +9,7 @@ var current_state = State.IDLE
 var is_attacking = false
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var hit_zone = $Area2D # Your Area2D sensor
+@onready var damage_handler = $Area2D/Damager
 
 func _ready():
 	add_to_group("blades")
@@ -35,6 +36,7 @@ func transition_to(new_state: State, data = null):
 			is_attacking = true
 			vfx.is_active = true # Trail On
 			basic_attack.is_active = false
+			damage_handler.reset_hit_tracking()  # ← Add this line
 			basic_attack.start_attack(data)
 			
 		State.ACTIVE:
@@ -57,14 +59,6 @@ func animate_arc(weight: float, start: float, end: float, dist:float):
 	global_position = player.global_position + offset
 	rotation = current_angle + PI/2 # Point the tip outward
 	# --- GHOST TRAIL LOGIC ---
-# This is the function Godot created when you connected the signal
-func _on_area_2d_area_entered(area):
-	var hit_object = area.get_parent() 
-	if hit_object.has_method("take_damage"):
-		audio.play_sfx("hit") # <--- Add this line here
-		hit_object.take_damage(global_position)
-	elif hit_object.has_method("die"):
-		hit_object.die()
 
 func _physics_process(delta):
 	if not is_attacking:

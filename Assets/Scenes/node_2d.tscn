@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dvv3n5cx5elvn" path="res://Assets/Scripts/pc.gd" id="1_i0ca2"]
 [ext_resource type="Texture2D" uid="uid://78td6qyfy2ey" path="res://Assets/Sprites/PCSprites/run_up.png" id="2_kh5qn"]
 [ext_resource type="Texture2D" uid="uid://dposiopfw0lmc" path="res://Assets/Sprites/PCSprites/run_up_diag.png" id="3_kg43w"]
-[ext_resource type="Script" uid="uid://l7dko4tcxotj" path="res://Assets/Scenes/anim_manager.gd" id="3_r2kmt"]
+[ext_resource type="Script" uid="uid://l7dko4tcxotj" path="res://Assets/Scripts/anim_manager.gd" id="3_r2kmt"]
 [ext_resource type="Script" uid="uid://cdh2iud5muwe0" path="res://Assets/Scripts/enemy_spawner.gd" id="3_vqsqb"]
 [ext_resource type="Texture2D" uid="uid://ba8hv51l8f3o6" path="res://Assets/Sprites/PCSprites/run_w.png" id="4_4bama"]
 [ext_resource type="Script" uid="uid://37hhouxfcfp7" path="res://Assets/Scripts/blade.gd" id="4_ubt4h"]
@@ -34,35 +34,6 @@ size = Vector2(55.78859, 72.34494)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w7qo"]
 bg_color = Color(0.12941177, 0.6784314, 0.70980394, 1)
-
-[sub_resource type="Animation" id="Animation_wqxw1"]
-resource_name = "run_n"
-loop_mode = 1
-step = 0.0833
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_kh5qn")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame_coords")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.3332, 0.4165, 0.49980003, 0.5831, 0.6664, 0.7497, 0.833, 0.9163),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
-}
 
 [sub_resource type="Animation" id="Animation_4bama"]
 length = 0.001
@@ -103,6 +74,35 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_wqxw1"]
+resource_name = "run_n"
+loop_mode = 1
+step = 0.0833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kh5qn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833, 0.1666, 0.24990001, 0.3332, 0.4165, 0.49980003, 0.5831, 0.6664, 0.7497, 0.833, 0.9163),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2)]
+}
+
 [sub_resource type="Animation" id="Animation_y0ef2"]
 resource_name = "run_n_diag"
 loop_mode = 1
@@ -132,8 +132,8 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 11, 11]
 }
 
-[sub_resource type="Animation" id="Animation_7a4l4"]
-resource_name = "run_w"
+[sub_resource type="Animation" id="Animation_4chkd"]
+resource_name = "run_s"
 step = 0.0833
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -145,7 +145,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_4bama")]
+"values": [ExtResource("6_pwrne")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -188,8 +188,8 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_4chkd"]
-resource_name = "run_s"
+[sub_resource type="Animation" id="Animation_7a4l4"]
+resource_name = "run_w"
 step = 0.0833
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -201,7 +201,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_pwrne")]
+"values": [ExtResource("4_4bama")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -468,6 +468,7 @@ volume_db = -1.9
 volume_db = 0.615
 
 [node name="AudioManager" type="Node" parent="Blade"]
+unique_name_in_owner = true
 script = ExtResource("15_02lvh")
 whoosh_sounds = Array[AudioStream]([ExtResource("5_ooilj"), ExtResource("6_2w2ct"), ExtResource("7_aq61h"), ExtResource("8_61ydt")])
 hit_sounds = Array[AudioStream]([ExtResource("9_s7rws"), ExtResource("10_02lvh"), ExtResource("11_j2do2"), ExtResource("12_qjy51"), ExtResource("13_6w7qo")])
@@ -509,5 +510,16 @@ script = ExtResource("7_2w2ct")
 [node name="EnemyJuggernaut" parent="." instance=ExtResource("23_ig8j3")]
 position = Vector2(493, 414)
 
+[node name="EnemyJuggernaut2" parent="." instance=ExtResource("23_ig8j3")]
+position = Vector2(793, -217)
+
+[node name="EnemyJuggernaut3" parent="." instance=ExtResource("23_ig8j3")]
+position = Vector2(845, 34)
+
+[node name="EnemyJuggernaut4" parent="." instance=ExtResource("23_ig8j3")]
+position = Vector2(627, -404)
+
+[node name="EnemyJuggernaut5" parent="." instance=ExtResource("23_ig8j3")]
+position = Vector2(252, -415)
+
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
-[connection signal="area_entered" from="Blade/Area2D" to="Blade/Area2D/Damager" method="_on_area_2d_area_entered"]
