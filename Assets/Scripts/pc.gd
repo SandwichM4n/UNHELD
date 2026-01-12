@@ -1,4 +1,6 @@
 extends CharacterBody2D
+@onready var state_machine = $StateMachine  # ← Add this
+@onready var bladesurge = $Bladesurge  # ← Add this
 @onready var anim_manager = $AnimManager
 @onready var blade = get_tree().get_first_node_in_group("blades")
 @onready var cooldown_bar = $DebugHUD/AttackCooldownBar
@@ -19,6 +21,9 @@ func _ready():
 
 func _physics_process(_delta):
 	anim_manager.update_visuals(current_state, velocity)
+	if state_machine.current_state != state_machine.State.NORMAL:
+		move_and_slide()
+		return
 	# 1. MOVEMENT LOGIC
 	if is_attacking:
 		velocity = velocity.lerp(Vector2.ZERO, 0.01)
@@ -46,6 +51,8 @@ func _physics_process(_delta):
 	# 3. ATTACK INPUT
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		attack()
+	if Input.is_action_just_pressed("bladesurge"):  # You need to add this input action!
+		bladesurge.try_activate()
 
 func update_sprite_direction(dir: Vector2):
 	if dir == Vector2.ZERO: return

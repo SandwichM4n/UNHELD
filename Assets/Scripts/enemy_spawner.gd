@@ -1,8 +1,8 @@
 extends Node
 
 @export var enemy_scene: PackedScene = preload("res://Assets/Scenes/EnemySwarmer.tscn") # Make sure path is correct!
-@export var max_enemies = 2
-@export var spawn_distance = 200 # Pixels beyond the screen edge
+@export var max_enemies = 10
+@export var spawn_distance = 290 # Pixels beyond the screen edge
 
 func _on_timer_timeout():
 	# 1. Count current enemies
