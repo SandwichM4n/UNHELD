@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nubpvwq046e4"
+path="res://.godot/imported/DefaultStackSound (8).ogg-ef6f22659421692a562a04bba30f5a67.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/DefaultStackSound/DefaultStackSound (8).ogg"
+dest_files=["res://.godot/imported/DefaultStackSound (8).ogg-ef6f22659421692a562a04bba30f5a67.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

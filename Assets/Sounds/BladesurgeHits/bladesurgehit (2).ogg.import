@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://blt2pihso472y"
+path="res://.godot/imported/bladesurgehit (2).ogg-02449d9a6d587d6b97c1e0251a3c9849.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/BladesurgeHits/bladesurgehit (2).ogg"
+dest_files=["res://.godot/imported/bladesurgehit (2).ogg-02449d9a6d587d6b97c1e0251a3c9849.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

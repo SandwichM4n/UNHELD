@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vlhr2jlr31px"
+path="res://.godot/imported/BladesurgeOnCast (5).ogg-6ac04a730d1c9d0325f4151eef6cbaa5.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (5).ogg"
+dest_files=["res://.godot/imported/BladesurgeOnCast (5).ogg-6ac04a730d1c9d0325f4151eef6cbaa5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

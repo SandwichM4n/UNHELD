@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://bt2764fmnk5vn"]
+[gd_scene load_steps=71 format=4 uid="uid://bt2764fmnk5vn"]
 
 [ext_resource type="Script" uid="uid://dvv3n5cx5elvn" path="res://Assets/Scripts/pc.gd" id="1_i0ca2"]
 [ext_resource type="Texture2D" uid="uid://78td6qyfy2ey" path="res://Assets/Sprites/PCSprites/run_up.png" id="2_kh5qn"]
@@ -16,20 +16,41 @@
 [ext_resource type="Script" uid="uid://bh7npvxsyupxg" path="res://Assets/Scripts/DamageHandler.gd" id="6_spvk6"]
 [ext_resource type="Script" uid="uid://dpmmc6vp4m2tn" path="res://Assets/Scripts/camera_2d.gd" id="7_2w2ct"]
 [ext_resource type="AudioStream" uid="uid://csl7f2uupr3ou" path="res://Assets/Sounds/On-Attack (3).ogg" id="7_aq61h"]
+[ext_resource type="Texture2D" uid="uid://vxcdwd8ywbsg" path="res://Assets/Sprites/PCSprites/dash_up.png" id="7_loe7k"]
 [ext_resource type="AudioStream" uid="uid://b0xpb4fb1fx0f" path="res://Assets/Sounds/On-Attack (4).ogg" id="8_61ydt"]
 [ext_resource type="Script" uid="uid://d46hv8iyjh3i" path="res://Assets/Scripts/PCStateMachine.gd" id="8_pwrne"]
+[ext_resource type="Texture2D" uid="uid://okq201248mqo" path="res://Assets/Sprites/PCSprites/dash_up_diag.png" id="8_us4q5"]
+[ext_resource type="Texture2D" uid="uid://bhxm5p80kkt11" path="res://Assets/Sprites/PCSprites/dash_w.png" id="9_6hde5"]
 [ext_resource type="Script" uid="uid://bhqo7s31ugrok" path="res://Assets/Scripts/Bladesurge.gd" id="9_7a4l4"]
 [ext_resource type="AudioStream" uid="uid://cjpq08k6sibnf" path="res://Assets/Sounds/On-Hit-Flesh (1).ogg" id="9_s7rws"]
 [ext_resource type="AudioStream" uid="uid://dvcatswrsflwi" path="res://Assets/Sounds/On-Hit-Flesh (2).ogg" id="10_02lvh"]
+[ext_resource type="Texture2D" uid="uid://bwru8rpdtjynl" path="res://Assets/Sprites/PCSprites/dash_down_diag.png" id="10_dtped"]
+[ext_resource type="Texture2D" uid="uid://1vhke8n0k4bx" path="res://Assets/Sprites/PCSprites/dash_down.png" id="11_i8a1d"]
 [ext_resource type="AudioStream" uid="uid://dkgckh6br3tg1" path="res://Assets/Sounds/On-Hit-Flesh (3).ogg" id="11_j2do2"]
 [ext_resource type="AudioStream" uid="uid://dagn05rh6ylkh" path="res://Assets/Sounds/On-Hit-Flesh (4).ogg" id="12_qjy51"]
 [ext_resource type="AudioStream" uid="uid://dx7ugbix428fp" path="res://Assets/Sounds/On-Hit-Flesh (5).ogg" id="13_6w7qo"]
 [ext_resource type="Script" uid="uid://c7b8bxgnq4swx" path="res://Assets/Scripts/audio_manager.gd" id="15_02lvh"]
+[ext_resource type="Script" uid="uid://bkivl70r1kq76" path="res://Assets/Scripts/AbilitySounds.gd" id="15_us4q5"]
+[ext_resource type="AudioStream" uid="uid://vuipfaao5od1" path="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (1).ogg" id="16_aqgql"]
 [ext_resource type="Script" uid="uid://bq1kp22tb4qq" path="res://Assets/Scripts/mover.gd" id="16_j2do2"]
 [ext_resource type="Script" uid="uid://ddfq30jv2ytro" path="res://Assets/Scripts/vfx.gd" id="17_qjy51"]
+[ext_resource type="AudioStream" uid="uid://bqgs6n77o4e6x" path="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (2).ogg" id="17_xlpk2"]
 [ext_resource type="Script" uid="uid://duqqqcrxmn7g2" path="res://Assets/Scripts/basic_attack.gd" id="18_6w7qo"]
+[ext_resource type="AudioStream" uid="uid://bec2uuunb6tgg" path="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (3).ogg" id="18_q4k4w"]
 [ext_resource type="Script" uid="uid://chm0dee43j2al" path="res://Assets/Scripts/juice_manager.gd" id="19_64k3t"]
+[ext_resource type="AudioStream" uid="uid://bsboeqdud3lw1" path="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (4).ogg" id="19_hrmod"]
+[ext_resource type="AudioStream" uid="uid://vlhr2jlr31px" path="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (5).ogg" id="20_kshjy"]
+[ext_resource type="AudioStream" uid="uid://qtevtxafw3qs" path="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (6).ogg" id="21_si36i"]
+[ext_resource type="AudioStream" uid="uid://btcc73ctjto74" path="res://Assets/Sounds/BladesurgeCasts/BladesurgeOnCast (7).ogg" id="22_hohko"]
+[ext_resource type="AudioStream" uid="uid://bowo2gdj5t4ne" path="res://Assets/Sounds/BladesurgeHits/bladesurgehit (1).ogg" id="23_c45xq"]
 [ext_resource type="PackedScene" uid="uid://c8jm0nd1hfnvq" path="res://Assets/Scenes/enemy_juggernaut.tscn" id="23_ig8j3"]
+[ext_resource type="AudioStream" uid="uid://blt2pihso472y" path="res://Assets/Sounds/BladesurgeHits/bladesurgehit (2).ogg" id="24_dpc86"]
+[ext_resource type="AudioStream" uid="uid://dyntvf6m13t8t" path="res://Assets/Sounds/BladesurgeHits/bladesurgehit (3).ogg" id="25_inqya"]
+[ext_resource type="AudioStream" uid="uid://cg7ujtppqxgcr" path="res://Assets/Sounds/BladesurgeHits/bladesurgehit (4).ogg" id="26_1kasi"]
+[ext_resource type="AudioStream" uid="uid://cw15pl5mws801" path="res://Assets/Sounds/BladesurgeHits/bladesurgehit (5).ogg" id="27_cy3n6"]
+[ext_resource type="AudioStream" uid="uid://bm0usih5ldiy5" path="res://Assets/Sounds/BladesurgeHits/bladesurgehit (6).ogg" id="28_dyei0"]
+[ext_resource type="AudioStream" uid="uid://dnmdse3ox848l" path="res://Assets/Sounds/BladesurgeHits/bladesurgehit (7).ogg" id="29_7v83v"]
+[ext_resource type="AudioStream" uid="uid://dkgc3w53kpyc6" path="res://Assets/Sounds/DefaultStackSound/DefaultStackSound (1).ogg" id="30_8xvqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
 size = Vector2(55.78859, 72.34494)
@@ -218,9 +239,154 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
+[sub_resource type="Animation" id="Animation_j3o38"]
+resource_name = "dash_n"
+step = 0.083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_loe7k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.24899998, 0.332, 0.415, 0.49799997, 0.581, 0.664, 0.747, 0.83, 0.913),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_jxnci"]
+resource_name = "dash_n_diag"
+step = 0.083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_us4q5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.24899998, 0.332, 0.415, 0.49799997, 0.581, 0.664, 0.747, 0.83, 0.913),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_o58tx"]
+resource_name = "dash_w"
+step = 0.083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_6hde5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.24899998, 0.332, 0.415, 0.49799997, 0.581, 0.664, 0.747, 0.83, 0.913),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_vacgn"]
+resource_name = "dash_s_diag"
+step = 0.083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_dtped")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.24899998, 0.332, 0.415, 0.49799997, 0.581, 0.664, 0.747, 0.83, 0.913),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_w308g"]
+resource_name = "dash_s"
+step = 0.083
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_i8a1d")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.083, 0.166, 0.24899998, 0.332, 0.415, 0.49799997, 0.581, 0.664, 0.747, 0.83, 0.913),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r2kmt"]
 _data = {
 &"RESET": SubResource("Animation_4bama"),
+&"dash_n": SubResource("Animation_j3o38"),
+&"dash_n_diag": SubResource("Animation_jxnci"),
+&"dash_s": SubResource("Animation_w308g"),
+&"dash_s_diag": SubResource("Animation_vacgn"),
+&"dash_w": SubResource("Animation_o58tx"),
 &"run_n": SubResource("Animation_wqxw1"),
 &"run_n_diag": SubResource("Animation_y0ef2"),
 &"run_s": SubResource("Animation_4chkd"),
@@ -421,6 +587,12 @@ script = ExtResource("8_pwrne")
 
 [node name="Bladesurge" type="Node" parent="PC"]
 script = ExtResource("9_7a4l4")
+
+[node name="AbilitySounds" type="Node" parent="PC/Bladesurge"]
+script = ExtResource("15_us4q5")
+cast_sounds = Array[AudioStream]([ExtResource("16_aqgql"), ExtResource("17_xlpk2"), ExtResource("18_q4k4w"), ExtResource("19_hrmod"), ExtResource("20_kshjy"), ExtResource("21_si36i"), ExtResource("22_hohko")])
+hit_sounds = Array[AudioStream]([ExtResource("23_c45xq"), ExtResource("24_dpc86"), ExtResource("25_inqya"), ExtResource("26_1kasi"), ExtResource("27_cy3n6"), ExtResource("28_dyei0"), ExtResource("29_7v83v")])
+cooldown_ready_sounds = Array[AudioStream]([ExtResource("30_8xvqa")])
 
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(59, 59)
