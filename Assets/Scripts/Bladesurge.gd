@@ -1,12 +1,12 @@
 extends Node
 
-@export var dash_speed: float = 600.0
+@export var dash_speed: float = 480.0
 @export var max_range: float = 200.0
 @export var cone_angle_degrees: float = 50.0
 @export var cooldown_duration: float = 6.0
 @export var damage_multiplier: float = 0.5
 @export var cursor_forgiveness_radius: float = 50.0
-@export var min_dash_anim_duration: float = 0.2
+@export var min_dash_anim_duration: float = 0.33
 
 @onready var player = get_parent() as CharacterBody2D
 @onready var blade = get_tree().get_first_node_in_group("blades")
@@ -127,15 +127,7 @@ func execute_bladesurge():
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_IN_OUT)
 	
-	# If animation needs more time, wait
-	if actual_duration > dash_duration:
-		dash_tween.tween_interval(actual_duration - dash_duration)
 	
-	# Force last frame if dash was faster than anim
-	dash_tween.tween_callback(func(): 
-		if dash_duration < min_dash_anim_duration:
-			anim_manager.force_last_frame(current_dash_anim)
-	)
 	
 	dash_tween.tween_callback(_on_dash_complete)
 

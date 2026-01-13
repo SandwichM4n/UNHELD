@@ -9,6 +9,7 @@ var shake_decay: float = 15.0 # How fast the shake stops
 
 func _ready():
 	process_callback = Camera2D.CAMERA2D_PROCESS_PHYSICS
+	Engine.time_scale = 1
 	position_smoothing_enabled = false
 
 func _physics_process(delta):

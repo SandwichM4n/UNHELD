@@ -20,10 +20,14 @@ func _ready():
 	current_state = anim_manager.State.RUN
 
 func _physics_process(_delta):
-	anim_manager.update_visuals(current_state, velocity)
+	# Only update visuals if NOT in a special state
+	if state_machine.current_state == state_machine.State.NORMAL:
+		anim_manager.update_visuals(current_state, velocity)
+	
 	if state_machine.current_state != state_machine.State.NORMAL:
 		move_and_slide()
 		return
+	
 	# 1. MOVEMENT LOGIC
 	if is_attacking:
 		velocity = velocity.lerp(Vector2.ZERO, 0.01)
