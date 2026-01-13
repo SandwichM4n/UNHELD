@@ -7,14 +7,14 @@ enum State { IDLE, RUN, DASH, ATTACK }
 
 const ANIM_MAP = {
 	"run": {
-		Vector2(0, -1): "run_n",
-		Vector2(0, 1): "run_s",
-		Vector2(-1, 0): "run_w",
-		Vector2(1, 0): "run_w",
-		Vector2(-1, -1): "run_n_diag",
-		Vector2(1, -1): "run_n_diag",
-		Vector2(-1, 1): "run_s_diag",
-		Vector2(1, 1): "run_s_diag"
+		Vector2(0, -1): "run_n",           # North
+		Vector2(0, 1): "run_s",            # South
+		Vector2(-1, 0): "run_w",           # West (no flip)
+		Vector2(1, 0): "run_e",            # East (no flip) ← NEW!
+		Vector2(-1, -1): "run_n_diag",     # NW (no flip)
+		Vector2(1, -1): "run_n_diag",      # NE (flipped) ← Still flips
+		Vector2(-1, 1): "run_s_diag",      # SW (no flip)
+		Vector2(1, 1): "run_s_diag"        # SE (flipped) ← Still flips
 	},
 	"dash": {
 		Vector2(0, -1): "dash_n",
@@ -69,8 +69,20 @@ func play_directional_anim(anim_type: String, direction: Vector2):
 	if anim_name.is_empty():
 		return
 	
-	# Handle horizontal flipping
-	sprite.flip_h = direction.x > 0
+	# Special handling: only flip for diagonal east directions
+	# Don't flip for pure east (run_e has its own animation now)
+	if direction == Vector2(1, 0):  # Pure east
+		sprite.flip_h = false  # Don't flip, use run_e as-is
+		sprite.scale = original_sprite_scale * 0.85  # ← 10% smaller for pure east
+	elif direction == Vector2(-1, 0):  # Pure west
+		sprite.flip_h = false
+		sprite.scale = original_sprite_scale * 0.85  # ← 10% smaller for pure west
+	elif direction.x > 0:  # NE or SE diagonals
+		sprite.flip_h = true
+		sprite.scale = original_sprite_scale  # ← Normal size for diagonals
+	else:
+		sprite.flip_h = false
+		sprite.scale = original_sprite_scale  # ← Normal size for other directions
 	
 	# Only play if not already playing this animation
 	if anim_player.current_animation != anim_name:
@@ -93,10 +105,10 @@ func play_dash_anim(direction: Vector2) -> String:
 	# Handle flipping
 	sprite.flip_h = snapped_dir.x > 0
 	
-	# Scale sprite 1.5x for dash
+	# Scale sprite 1.42x for dash
 	sprite.scale = original_sprite_scale * 1.42
 	
-	# Play animation at 1.5x speed (faster than the 1 second default)
+	# Play animation at 1.5x speed
 	anim_player.speed_scale = 1.5
 	anim_player.play(anim_name)
 	

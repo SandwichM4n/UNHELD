@@ -6,7 +6,7 @@ extends Node
 @export var cooldown_duration: float = 6.0
 @export var damage_multiplier: float = 0.5
 @export var cursor_forgiveness_radius: float = 50.0
-@export var min_dash_anim_duration: float = 0.33
+@export var min_dash_anim_duration: float = 0.27
 
 @onready var player = get_parent() as CharacterBody2D
 @onready var blade = get_tree().get_first_node_in_group("blades")
@@ -127,6 +127,9 @@ func execute_bladesurge():
 		.set_trans(Tween.TRANS_CUBIC)\
 		.set_ease(Tween.EASE_IN_OUT)
 	
+	# If animation needs more time, wait
+	if actual_duration > dash_duration:
+		dash_tween.tween_interval(actual_duration - dash_duration)
 	
 	
 	dash_tween.tween_callback(_on_dash_complete)
@@ -204,3 +207,4 @@ func spawn_damage_number(amount: int, pos: Vector2):
 	t.parallel().tween_property(label, "global_position:x", pos.x + randf_range(-10, 10), 0.4)
 	t.parallel().tween_property(label, "modulate:a", 0.0, 0.3).set_delay(0.2)
 	t.chain().tween_callback(label.queue_free)
+#TODO: Make blade attack with the player (Create dedicated bladesurge node for blade), Make input buffer for ohter abilities/attack presses or holds (Must be scalable for now it could be if i press or hold/holding basic_attack input 0.50 seconds before dash end, execute this input action right after bladesurge ends) 
