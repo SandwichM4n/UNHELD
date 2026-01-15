@@ -1,0 +1,66 @@
+MAKE MEDUSA-LIKE ENEMY YOU CANT LOOK AT THEM (THIS IS GENIUS BTW)
+MAKE AOE ENEMY THAT ATTACKS FAST SO YOU NEED TO DASH OUT CONSISTENTLY (BUT HE IS STRONG AGAINST RANGED ATTACKS)
+Make bladesurge blade animated
+Implement multiblades
+Make breakable stuff
+To maximize testing efficiency, you want a "Linear Gauntlet." This is a single level designed like a laboratory—each room is a specific "test" for a different part of your code.
+
+If you just build a random forest, you might miss a bug. If you build these four specific zones, you will stress-test every system you’ve built so far.
+Room 1: The "Feel" Hallway (The Movement Test)
+
+Goal: Test navigation, dashing, and the camera.
+
+	Layout: A long, narrow L-shaped corridor with a few pillars.
+
+	The Test: Can you dash around the corner without getting stuck on the geometry? Does the camera follow smoothly?
+
+	The "Mature" Detail: Put a few breakable pots or wooden crates here. If the blades smash them as you run past, the "Unheld Path" feels powerful before you even see an enemy.
+
+Room 2: The "Phalanx" Gate (The Targeting Test)
+
+Goal: Test "Smart Targeting" and combat priority.
+
+	Layout: A medium square room with two Shielded Enemies blocking the exit.
+
+	The Test: If you click the enemy behind the shield, do your blades correctly try to find a path, or do they just hit the shield over and over? This is where you refine how the "6 blades" decide who to hit.
+
+	The Choice: This room forces the player to use the Dash to get behind the line.
+
+Room 3: The "Swarm" Courtyard (The Performance Test)
+
+Goal: Test your base classes and the "Swarm" logic.
+
+	Layout: A large, open circular or octagonal area with "Vibrant" colors (maybe a courtyard with a central tree).
+
+	The Test: Trigger a wave of 15–20 basic "Chaser" enemies.
+
+	The Goal: Does the frame rate drop? Do the enemies clump together in an ugly way, or do they spread out? This is where you test the "Chaos" of your combat.
+
+Room 4: The "Sniper" Terrace (The Threat Test)
+
+Goal: Test player survival and LOS (Line of Sight).
+
+	Layout: A room with elevated platforms or "balconies" that the player cannot reach by walking.
+
+	The Test: Place 2 ranged enemies on the balconies and 3 melee enemies on the floor.
+
+	The Logic: This tests if your blades can fly "Up" or hit targets at a different height. It also forces the player to dodge projectiles while fighting melee—the peak of "Mature Warfare."
+
+The "Golden Rule" of Prototype Layouts:
+
+Use 3 Different Floor Colors.
+
+	Color A (Walking Path): Use this for where the player can go.
+
+	Color B (Walls/Obstacles): Use this for what blocks the player and the blades.
+
+	Color C (Low Obstacles): Use this for things the player cannot walk through, but the blades can fly over (like a low fence or a small stream).
+
+		This is vital for a Telekinesis game—the blades should feel like they aren't bound by the same "walking" rules as Shaoren.
+
+The "Day 14" Checklist
+Test Area	What Success Looks Like
+Room 1	Dashing feels "slick," not "clunky."
+Room 2	Player feels "Smart" for outmaneuvering a shield.
+Room 3	Killing the swarm feels "Juicy" (Numbers/SFX working).
+Room 4	The player actually dies if they don't move.

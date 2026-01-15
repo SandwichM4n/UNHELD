@@ -66,11 +66,15 @@ func update_sprite_direction(dir: Vector2):
 func attack():    
 	if not can_attack:
 		return
+	
+	if blade.wall_handler and not blade.wall_handler.can_attack():
+		print("Can't attack - blade is clanking!")
+		return
+	
 	# Keep your safety check: ensures blade is ready
 	if blade and not blade.is_attacking:
 		can_attack = false
 		is_attacking = true
-		cooldown_bar.value = 100
 		create_tween().tween_property(cooldown_bar, "value", 0, 1.0)
 		# We replace the long manual math with the new function call
 		var attack_vec: Vector2
@@ -81,9 +85,10 @@ func attack():
 		
 		# Execute the slash
 		blade.execute_slash(attack_vec)
-		
-		# Your existing timer logic
-		await get_tree().create_timer(1).timeout # 0.4 is usually snappier than 1.0!
+		# ← ADD THIS: Wait for base cooldown + any clank time
+		var cooldown_time = 1.0
+		if blade.wall_handler and blade.wall_handler.is_clanking:
+			cooldown_time += blade.wall_handler.clank_timer
 		is_attacking = false
 		# --- THE ELEGANT CHECK ---
 		# If the player is STILL holding the attack button after the timer...
@@ -122,7 +127,7 @@ func get_aim_direction(force_auto: bool) -> Vector2:
 func get_closest_enemy():
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	var closest = null
-	var min_dist = 400.0 # Only auto-target within this range
+	var min_dist = 100.0 # Only auto-target within this range
 	
 	for e in enemies:
 		var dist = global_position.distance_to(e.global_position)

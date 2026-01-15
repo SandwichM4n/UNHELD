@@ -1,15 +1,20 @@
 extends Node2D
-enum State { IDLE, WINDUP, ACTIVE, RECOVERY }
+enum State { IDLE, WINDUP, ACTIVE, RECOVERY}
 var current_state = State.IDLE
+
+var is_clanking = false
 @onready var audio = $AudioManager
 @onready var mover = $Mover
 @onready var vfx = $VFX
 @onready var sprite = $Bladesprite # Make sure this matches your node name!
 @onready var basic_attack = $BasicAttack
-var is_attacking = false
-@onready var player = get_tree().get_first_node_in_group("player")
 @onready var hit_zone = $Area2D # Your Area2D sensor
 @onready var damage_handler = $Area2D/Damager
+@onready var wall_handler = $WallCollisionHandler  # ← ADD THIS LINE
+
+var is_attacking = false
+@onready var player = get_tree().get_first_node_in_group("player")
+
 
 func _ready():
 	add_to_group("blades")

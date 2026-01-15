@@ -1,0 +1,4 @@
+Blade does not stop when attacking surfaces still passes through, need to nullify its velocity then bounce it in direction opposite of strike
+Blade should not be able to pass walls in any state but bounce off only in windup(not implemented) and active frames.
+Player cooldown of attack fucking dissapeared (i noticed claude added something about cooldown of attack bar but i didnt use it since forever)
+Blade trail (line2d) draws over the wall even if y sort enabled
